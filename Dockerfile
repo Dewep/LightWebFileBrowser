@@ -15,7 +15,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 # Add deploy+flask files
 ADD flask/ /data_server
 ADD deploy/supervisor.conf /etc/supervisor.conf
-ADD deploy/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Nginx daemon off
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -25,6 +24,8 @@ RUN pip install git+git://github.com/Supervisor/supervisor.git@f99d017de2e921c8e
 RUN pip install gunicorn
 RUN pip install -r /data_server/requirements.txt
 
+# Nginx conf
+ADD deploy/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

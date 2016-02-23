@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta name="robots" content="none">
+
+    <title>Seedbox File Browser</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.green-blue.min.css" />
+    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+    <!--[if ie]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <style>
+    table.mdl-data-table {
+        width: 100%;
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+    table.mdl-data-table a {
+        text-decoration: none;
+    }
+    table.mdl-data-table td {
+        padding: 5px;
+    }
+    .mdl-list__item {
+        padding: 0;
+    }
+    .mdl-list__item-avatar, .mdl-list__item-avatar.material-icons {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        padding: 5px;
+    }
+    section.mdl-grid {
+        max-width: 1300px;
+    }
+    </style>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--scroll">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title"><a class="mdl-navigation__link" href="/">Seedbox File Browser</a></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="/">Home</a>
+                    <a class="mdl-navigation__link" href="/_tasks/">Tasks</a>
+                    <a class="mdl-navigation__link" href="/transmission/web/">Transmission</a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <section class="section--center mdl-grid mdl-grid--no-spacing">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+    </script>
+</body>
+</html>

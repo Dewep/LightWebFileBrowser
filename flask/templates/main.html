@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="mdl-data-table mdl-shadow--2dp">
+    <tbody>
+    {% if path != "/" %}
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric">
+            <span class="mdl-list__item">
+                <a href="{{ path }}../">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-avatar">arrow_back</i>
+                        <span>Parent directory</span>
+                    </span>
+                </a>
+            </span>
+        </td>
+    </tr>
+    {% endif %}
+</tbody>
+</table>
+<table class="mdl-data-table mdl-shadow--2dp">
+    <tbody>
+        {% for file in files %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                {% if file.type == "directory" %}
+                <span class="mdl-list__item">
+                    <a href="{{ path }}{{ file.name }}">
+                        <span class="mdl-list__item-primary-content">
+                            <i class="material-icons mdl-list__item-avatar">folder</i>
+                            <span>{{ file.name }}</span>
+                        </span>
+                    </a>
+                </span>
+                {% else %}
+                <span class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <span>{{ file.name }}</span>
+                    </span>
+                </span>
+                {% endif %}
+            </td>
+            <td>
+                {% if file.type == "file" %}
+                <a href="/_download{{ path }}{{ file.name }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Download</a>
+                {% endif %}
+                <button id="menu-lower-right-{{ file.id }}" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i></button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right-{{ file.id }}">
+                    {% if file.type == "directory" %}
+                    <li class="mdl-menu__item"><a href="/_zip{{ path }}{{ file.name }}">Zip Directory</a></li>
+                    {% endif %}
+                    <li class="mdl-menu__item"><a href="/_remove{{ path }}{{ file.name }}">Remove</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

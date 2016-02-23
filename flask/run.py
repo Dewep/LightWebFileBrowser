@@ -7,7 +7,7 @@ import time
 import json
 
 app = Flask(__name__)
-root_path = "/data"
+root_path = "/data/_download"
 
 def get_tasks():
     tasks = {}
